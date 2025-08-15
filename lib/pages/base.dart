@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:wallpaper/features/custom_bottom_widget.dart';
+import 'package:wallpaper/pages/home.dart';
 
 
 class  MainScreen extends StatefulWidget{
@@ -23,10 +24,10 @@ class _MainScreenState extends State<MainScreen> {
     return [
       // Home(),
       // Fish(),
+      Home(),
       Center(child: Text('service')),      
       Center(child: Text('me')),
-      Center(child: Text('service')),      
-      Center(child: Text('me')),
+
     ];
   }
 
