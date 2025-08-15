@@ -42,7 +42,9 @@ class CustomBottomNavigationBar extends StatelessWidget {
               bottom: verticalPadding
             ),
             decoration: BoxDecoration(
-              color: baseColor,
+              color: baseColor.withValues(
+                alpha: 0.7
+              ),
               borderRadius: BorderRadius.circular(borderRadius),
             ),
             child: Row(

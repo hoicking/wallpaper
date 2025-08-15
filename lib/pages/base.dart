@@ -35,22 +35,50 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
 
     final pages = _buildPages(context);
-
     return Scaffold(
-      key: _scaffoldKey,
-      body: pages[_currentIndex],
+    key: _scaffoldKey,
+    body: Stack(
+      children: [
+        pages[_currentIndex],
+        Positioned(
+          left: 0,
+          right: 0,
+          bottom: 0,
+          child: IgnorePointer(
+            ignoring: false, // 允许点击
+            child: CustomBottomNavigationBar(
+              currentIndex: _currentIndex,
+              onTap: (value) {
+                setState(() => _currentIndex = value);
+              },
+              icons: const [
+                Icons.home,
+                Icons.search,
+                Icons.person,
+              ],
+            ),
+          ),
+        ),
+      ],
+    ),
+    // 不要再用 bottomNavigationBar
+  );
 
-      bottomNavigationBar: CustomBottomNavigationBar(
-         currentIndex: _currentIndex,
-         onTap: (value){
-           setState(() => _currentIndex = value);
-         },
-         icons: const [
-          Icons.home,
-          Icons.search,
-          Icons.person,
-        ],
-      ),
-    );
+    // return Scaffold(
+    //   key: _scaffoldKey,
+    //   body: pages[_currentIndex],
+
+    //   bottomNavigationBar: CustomBottomNavigationBar(
+    //      currentIndex: _currentIndex,
+    //      onTap: (value){
+    //        setState(() => _currentIndex = value);
+    //      },
+    //      icons: const [
+    //       Icons.home,
+    //       Icons.search,
+    //       Icons.person,
+    //     ],
+    //   ),
+    // );
   }
 }
