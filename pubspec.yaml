@@ -64,6 +64,7 @@ flutter:
     - assets/images/covers/group2/
     - assets/images/covers/group3/
     - assets/images/covers/group4/
+    - assets/images/basic/
     - assets/translations/
 
   # An image asset can refer to one or more resolution-specific "variants", see

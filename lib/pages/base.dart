@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:wallpaper/features/custom_bottom_widget.dart';
 import 'package:wallpaper/pages/home.dart';
+import 'package:wallpaper/pages/profile.dart';
 
 
 class  MainScreen extends StatefulWidget{
@@ -19,27 +20,37 @@ class _MainScreenState extends State<MainScreen> {
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  
+  late final List<Widget> _pages;
+
+  @override
+  void initState() {
+    super.initState();
+    _pages = _buildPages(context);
+  }
+
   List<Widget> _buildPages (BuildContext context) {
     return [
       // Home(),
       // Fish(),
-      Home(),
-      Center(child: Text('service')),      
-      Center(child: Text('me')),
-
+      const Home(),
+      const Center(child: Text('service')),      
+      // Center(child: Text('me')),
+      const Profile()
     ];
   }
 
   @override
   Widget build(BuildContext context) {
 
-    final pages = _buildPages(context);
+    // final pages = _buildPages(context);
     return Scaffold(
     key: _scaffoldKey,
     body: Stack(
       children: [
-        pages[_currentIndex],
+        IndexedStack(
+          index: _currentIndex,
+          children: _pages,
+        ),
         Positioned(
           left: 0,
           right: 0,
